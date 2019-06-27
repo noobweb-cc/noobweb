@@ -8,7 +8,7 @@ module.exports = {
     mode: 'development',
     entry: './main.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'lib'),
         filename: 'noobweb.js',
         libraryTarget: "umd",
         library: "noobweb"

@@ -2,7 +2,7 @@
   "name": "noobweb",
   "version": "1.0.14",
   "description": "",
-  "main": "dist/noobweb.js",
+  "main": "lib/noobweb.js",
   "scripts": {
     "build": "webpack --mode=development --config ./webpack.config.js",
     "dev": "webpack --mode=development --config ./webpack.config.js",
