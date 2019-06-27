@@ -1,5 +1,6 @@
 <template>
     <div class="mathInt">
+        {{test}}
         <h3 v-for="(item, index) in msg" :key="index">
             {{item.msg}}
         </h3>
@@ -7,11 +8,14 @@
 </template>
 <script>
 export default {
+    props: ['test'],
     data () {
-        msg: [
-            { msg: '我是前端小白的一名成员' },
-            { msg: '这是我们的noob-web组件库入口' },
-        ]
+        return {
+            msg: [
+                { msg: '我是前端小白的一名成员' },
+                { msg: '这是我们的noob-web组件库入口' },
+            ]
+        }
     }
 }
 </script>
