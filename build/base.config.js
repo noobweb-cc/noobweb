@@ -1,5 +1,6 @@
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path');
 
 module.exports = {
@@ -27,6 +28,7 @@ module.exports = {
               test: /\.css$/,
               include: [path.resolve(__dirname, '../src')],
               use: [
+                MiniCssExtractPlugin.loader,
                 'style-loader',
                 'css-loader'
               ]
@@ -35,6 +37,7 @@ module.exports = {
                 test: /\.less$/,
                 include: [path.resolve(__dirname, '../src')],
                 use: [
+                    MiniCssExtractPlugin.loader,
                     'style-loader',
                     'css-loader',
                     'less-loader'
@@ -64,6 +67,10 @@ module.exports = {
                 ie8: false,
                 keep_fnames: false
             }
+        }),
+        new MiniCssExtractPlugin({
+            filename: "../dist/css/[hash][name].nw.css", 
+            chunkFilename: "../dist/css/[hash][id].nw.css"
         })
     ],
     externals: {

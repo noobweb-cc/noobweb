@@ -7,6 +7,7 @@
     "build": "webpack --mode=development --config ./webpack.config.js",
     "dev": "webpack --mode=development --config ./build/dev.config.js && webpack-dev-server --open",
     "serve": "npm run dev && webpack-dev-server --open",
+    "try": "webpack --mode=development --config ./build/dev.config.js && webpack-dev-server --open",
     "open": "webpack-dev-server --open",
     "v": "npm version patch",
     "p": "npm publish"
@@ -21,19 +22,23 @@
     "babel-loader": "8.0.0-beta.0",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^3.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.7.0",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.3",
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.34.0",
     "webpack-cli": "^3.3.4",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-dev-server": "^3.7.2",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "webpack-merge": "^4.2.1"
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.6"
   },
   "files": [
     "lib"
