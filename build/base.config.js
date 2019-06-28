@@ -1,5 +1,3 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
@@ -8,7 +6,7 @@ module.exports = {
     mode: 'development',
     entry: './main.js',
     output: {
-        path: path.resolve(__dirname, 'lib'),
+        path: path.resolve(__dirname, '../lib'),
         filename: 'noobweb.js',
         libraryTarget: "umd",
         library: "noobweb"
@@ -17,7 +15,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                include: [path.resolve(__dirname, 'src')],
+                include: [path.resolve(__dirname, '../src')],
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -27,7 +25,7 @@ module.exports = {
             },
             {
               test: /\.css$/,
-              include: [path.resolve(__dirname, 'src')],
+              include: [path.resolve(__dirname, '../src')],
               use: [
                 'style-loader',
                 'css-loader'
@@ -35,7 +33,7 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                include: [path.resolve(__dirname, 'src')],
+                include: [path.resolve(__dirname, '../src')],
                 use: [
                     'style-loader',
                     'css-loader',
@@ -44,7 +42,7 @@ module.exports = {
             },
             {
                 test: /\.vue$/,
-                include: [path.resolve(__dirname, 'src')],
+                include: [path.resolve(__dirname, '../src')],
                 use: [
                     'vue-loader'
                 ]

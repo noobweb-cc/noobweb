@@ -5,7 +5,9 @@
   "main": "lib/noobweb.js",
   "scripts": {
     "build": "webpack --mode=development --config ./webpack.config.js",
-    "dev": "webpack --mode=development --config ./webpack.config.js",
+    "dev": "webpack --mode=development --config ./build/dev.config.js && webpack-dev-server --open",
+    "serve": "npm run dev && webpack-dev-server --open",
+    "open": "webpack-dev-server --open",
     "v": "npm version patch",
     "p": "npm publish"
   },
@@ -27,7 +29,8 @@
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.34.0",
-    "webpack-cli": "^3.3.4"
+    "webpack-cli": "^3.3.4",
+    "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
     "webpack-merge": "^4.2.1"

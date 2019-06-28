@@ -16,6 +16,9 @@ export default {
                 { msg: '这是我们的noob-web组件库入口' },
             ]
         }
+    },
+    created () {
+        console.log(23)
     }
 }
 </script>
