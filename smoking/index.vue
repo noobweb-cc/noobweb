@@ -1,9 +1,9 @@
 <template>
     <div>
+        {{msg}}
         <p>
             <nw-button>前端小白？？</nw-button>
         </p>
-        {{msg}}
     </div>
 </template>
 <script>
@@ -22,6 +22,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+// body {
+//     background-color: #ccc;
+// }
 </style>
 

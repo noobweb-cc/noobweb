@@ -1,6 +1,6 @@
 <template>
   <button
-    class="nw-button" style="color: yellow;"
+    class="nw-button"
     @click="handleClick"
     :class="[
       type ? 'nw-button--' + type : '',
@@ -38,9 +38,6 @@ export default {
 }
 </script>
 <style>
-body {
-    background: #ff6400;
-}
 /* @import url('./less.less'); */
 </style>
 

@@ -50,21 +50,11 @@ module.exports = {
                     path.resolve(__dirname, './example'),
                     path.resolve(__dirname, './src')
                 ],
-                use: [
-                    {
-                      loader: 'style-loader'
-                    },
-                    {
-                      loader: 'css-loader'
-                    },
-                    {
-                      loader: 'less-loader'
-                    }
-                ]
+                use: [ 'style-loader', 'css-loader', 'less-loader' ]
             },
             {
                 test: /\.vue$/,
-                loader: "vue-loader"
+                loader: ["vue-loader"]
             }
         ]
     },
