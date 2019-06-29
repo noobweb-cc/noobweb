@@ -6,11 +6,6 @@
         </p>
     </div>
 </template>
-<style >
-/* body {
-    font-size: 12px
-} */
-</style>
 <script>
 import NwButton from '@/packages/button/index.js'
 
@@ -25,6 +20,11 @@ export default {
     }
 }
 </script>
+<style>
+body {
+    font-size: 12px
+}
+</style>
 
 
 
