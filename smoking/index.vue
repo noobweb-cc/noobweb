@@ -2,10 +2,15 @@
     <div>
         {{msg}}
         <p>
-            <nw-button>前端小白？？</nw-button>
+            <nw-button>内容</nw-button>
         </p>
     </div>
 </template>
+<style >
+body {
+    font-size: 12px
+}
+</style>
 <script>
 import NwButton from '@/packages/button/index.js'
 
@@ -21,9 +26,5 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-// body {
-//     background-color: #ccc;
-// }
-</style>
+
 
