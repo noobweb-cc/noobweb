@@ -7,9 +7,9 @@
     </div>
 </template>
 <style >
-body {
+/* body {
     font-size: 12px
-}
+} */
 </style>
 <script>
 import NwButton from '@/packages/button/index.js'

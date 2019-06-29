@@ -2,6 +2,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const path = require('path');
 
 const includePack = _=> {
@@ -59,6 +60,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new ProgressBarPlugin(),
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             inject: true,
