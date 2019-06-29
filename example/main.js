@@ -1,13 +1,13 @@
+/**
+ * auth: 752781621
+ * web前端小白ＱＱ群：213787432
+ * 
+ */
 
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-
-import routers from './router/index'
+import router from './router/index'
 import App from './App.vue'
 
-Vue.use(VueRouter)
-
 new Vue({
-    routers,
+    router,
     render: h=>h(App)
 }).$mount('#app')

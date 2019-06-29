@@ -4,17 +4,27 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path');
 
+const includePack = _=> {
+    return [
+        path.resolve(__dirname, './example'),
+        path.resolve(__dirname, './src')
+    ]
+}
+
 module.exports = {
     entry: './example/main.js',
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: '[name][hash].nw.js'
+        filename: '[name].[hash].nw.js'
     },
     module: {
         rules: [
             {
                 test: /\.js$/,
-                include: [path.resolve(__dirname, './example')],
+                include: [
+                    path.resolve(__dirname, './example'),
+                    path.resolve(__dirname, './src')
+                ],
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -24,26 +34,37 @@ module.exports = {
             },
             {
               test: /\.css$/,
-              include: [path.resolve(__dirname, './example')],
+              include: [
+                path.resolve(__dirname, './example'),
+                path.resolve(__dirname, './src')
+              ],
               use: [
-                MiniCssExtractPlugin.loader,
+                // MiniCssExtractPlugin.loader,
                 'style-loader',
                 'css-loader'
               ]
             },
             {
                 test: /\.less$/,
-                include: [path.resolve(__dirname, './example')],
+                include: [
+                    path.resolve(__dirname, './example'),
+                    path.resolve(__dirname, './src')
+                ],
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    'style-loader',
-                    'css-loader',
-                    'less-loader'
+                    {
+                      loader: 'style-loader'
+                    },
+                    {
+                      loader: 'css-loader'
+                    },
+                    {
+                      loader: 'less-loader'
+                    }
                 ]
             },
             {
                 test: /\.vue$/,
-                use: [ 'vue-loader' ]
+                loader: "vue-loader"
             }
         ]
     },
@@ -53,7 +74,7 @@ module.exports = {
             inject: true,
             template: './example/index.html'
         }),
-        // {sourceMap: true}
+        // new UglifyJsPlugin(),
         new UglifyJsPlugin({
             uglifyOptions: {
                 warnings: false,
@@ -79,16 +100,21 @@ module.exports = {
         inline: true
     },
     externals: {
-        vue: 'vue',
+        Vue: 'vue',
+        vueRouter: 'vue-router'
     },
     resolve: {
-        extensions: ['.vue', '.js']
+        extensions: ['.vue', '.js'],
+        alias: {
+            '@': '../src'
+        }
     },
-    stats: {
-        colors: true,
-        modules: false,
-        children: false,
-        chunks: true,
-        chunkModules: false
-    }
+    stats: {},
+    // stats: {
+    //     colors: true,
+    //     modules: false,
+    //     children: false,
+    //     chunks: true,
+    //     chunkModules: false
+    // }
 }

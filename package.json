@@ -5,7 +5,7 @@
   "main": "lib/noobweb.js",
   "scripts": {
     "build": "webpack --mode=development --config ./webpack.config.js",
-    "dev": "webpack --mode=development --config ./build/dev.config.js && webpack-dev-server --open",
+    "dev": "webpack --mode=development --config ./build/dev.config.js && webpack-dev-server",
     "serve": "npm run dev && webpack-dev-server --open",
     "try": "webpack --mode=development --config ./build/dev.config.js && webpack-dev-server --open",
     "open": "webpack-dev-server --open",
@@ -30,6 +30,7 @@
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.3",
     "vue-loader": "^15.7.0",
+    "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.34.0",
     "webpack-cli": "^3.3.4",
