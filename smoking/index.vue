@@ -2,7 +2,11 @@
     <div>
         {{msg}}
         <p>
-            <nw-button>内容</nw-button>
+            <nw-button :type="'info'">万物</nw-button>
+            <nw-button v-for="item of nwOjb" :key="item" :type="'danger'" :circle="true">
+                {{item}}
+            </nw-button>
+            <nw-button :type="'info'">皆按钮</nw-button>
         </p>
     </div>
 </template>
@@ -15,7 +19,8 @@ export default {
     },
     data () {
         return {
-            msg: '冒烟测试'
+            msg: '冒烟测试',
+            nwOjb: 'web前端小白'.split('')
         }
     }
 }
