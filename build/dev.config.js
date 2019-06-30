@@ -5,11 +5,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const path = require('path');
 
-const includePack = _=> {
-    return [
-        path.resolve(__dirname, './example'),
-        path.resolve(__dirname, './src')
-    ]
+const pathResolve = str => {
+    return path.resolve(__dirname, str)
 }
 
 module.exports = {
@@ -23,8 +20,8 @@ module.exports = {
             {
                 test: /\.js$/,
                 include: [
-                    path.resolve(__dirname, './example'),
-                    path.resolve(__dirname, './src')
+                    pathResolve('./example'),
+                    pathResolve('./src')
                 ],
                 use: {
                     loader: 'babel-loader',
@@ -34,28 +31,25 @@ module.exports = {
                 }
             },
             {
+                test: /\.vue$/,
+                use: [
+                    'vue-loader'
+                ]
+            },
+            {
               test: /\.css$/,
-              include: [
-                path.resolve(__dirname, './example'),
-                path.resolve(__dirname, './src')
-              ],
               use: [
-                // MiniCssExtractPlugin.loader,
-                'style-loader',
+                'vue-style-loader',
                 'css-loader'
               ]
             },
             {
                 test: /\.less$/,
                 include: [
-                    path.resolve(__dirname, './example'),
-                    path.resolve(__dirname, './src')
+                    pathResolve('./example'),
+                    pathResolve('./src')
                 ],
-                use: [ 'style-loader', 'css-loader', 'less-loader' ]
-            },
-            {
-                test: /\.vue$/,
-                loader: "vue-loader"
+                use: [ 'vue-style-loader', 'css-loader', 'less-loader' ]
             }
         ]
     },
@@ -98,7 +92,8 @@ module.exports = {
     resolve: {
         extensions: ['.vue', '.js'],
         alias: {
-            '@': '../src'
+            '@': '../src',
+            'vue$': 'vue/dist/vue.esm.js'
         }
     },
     stats: {},

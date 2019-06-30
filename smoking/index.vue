@@ -21,9 +21,9 @@ export default {
 }
 </script>
 <style>
-body {
-    font-size: 12px
-}
+/* body {
+    background-color: #ff6400;
+} */
 </style>
 
 
