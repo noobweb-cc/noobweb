@@ -1,6 +1,6 @@
 <template>
     <div>
-        {{msg}}
+        <h3 style="font-size: 24px;">{{msg}}</h3>
         <p>
             <nw-button :type="'info'">万物</nw-button>
             <nw-button v-for="item of nwOjb" :key="item" :type="'danger'" :circle="true">

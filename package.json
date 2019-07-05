@@ -5,7 +5,8 @@
   "main": "lib/noobweb.js",
   "scripts": {
     "build": "webpack --mode=development --config ./webpack.config.js",
-    "dev": "webpack --mode=development --config ./build/dev.config.js && webpack-dev-server",
+    "devS": "webpack-dev-server --mode=development --config ./build/dev.config.js",
+    "dev": "rm -rf ../dist/ && webpack --mode=development --config ./build/dev.config.js",
     "serve": "npm run dev && webpack-dev-server --open",
     "try": "webpack --mode=development --config ./build/dev.config.js && webpack-dev-server --open",
     "open": "webpack-dev-server --open",

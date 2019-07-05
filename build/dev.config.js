@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -13,8 +14,32 @@ module.exports = {
     entry: './example/main.js',
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: '[name].[hash].nw.js'
+        filename: './FF/js/[name].[hash].nw.js'
     },
+    /**
+    optimization: {
+        splitChunks: {
+            chunks: 'async',
+            minSize: 30000,
+            maxSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            name: true,
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                }
+            }
+        }
+    }, */
     module: {
         rules: [
             {
@@ -37,11 +62,16 @@ module.exports = {
                 ]
             },
             {
-              test: /\.css$/,
-              use: [
-                'vue-style-loader',
-                'css-loader'
-              ]
+                test: /\.css$/,
+                use: [
+                  {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        publicPath: '../'
+                    }
+                  },
+                  "css-loader"
+                ]
             },
             {
                 test: /\.less$/,
@@ -60,7 +90,6 @@ module.exports = {
             inject: true,
             template: './example/index.html'
         }),
-        // new UglifyJsPlugin(),
         new UglifyJsPlugin({
             uglifyOptions: {
                 warnings: false,
@@ -75,15 +104,18 @@ module.exports = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: "[hash][name].nw.css", 
-            chunkFilename: "[hash][id].nw.css"
-        })
+            filename: "./FF/css/[hash][id].nw.css", 
+            chunkFilename: "./FF/css/[hash][id].nw.css"
+        }),
+        new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
-        contentBase: path.resolve(__dirname, './index.html'),
+        contentBase: '../dist',
         compress: true,
-        port: 9000,
-        inline: true
+        port: "9200",
+        inline: true,
+        hot: true,
+        open: true
     },
     externals: {
         Vue: 'vue',

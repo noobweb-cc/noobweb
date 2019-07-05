@@ -38,7 +38,7 @@ export default {
 }
 </script>
 <style>
-/* @import url('./less.less'); */
+@import url('./less.less');
 </style>
 
 <style>
